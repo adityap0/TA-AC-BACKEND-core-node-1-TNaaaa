@@ -1,14 +1,13 @@
-// let fs = require("fs");
-// let path = require("path");
-// let filepath = path.join(__dirname, "content.md");
-// fs.readFile("content.md", (error, file) => {
-//   console.log(error, file.toString());
-// });
+let { readFile, readFileSync } = require("fs");
+let path = require("path");
+let filepath = path.join(__dirname, "content.md");
+readFile("content.md", "utf8", (error, file) => {
+  console.log(file);
+});
 
-console.log(`Run me 1st`);
-for (let i = 0; i < 2; i++) {
-  setTimeout(() => {
-    console.log(`hey`);
-  }, 1000);
-}
-console.log(`Run me last`);
+var final = readFileSync("content.md", "utf8");
+console.log(final);
+
+var buff1 = Buffer.alloc(10);
+buff1.write(`Welcome to Buffer`);
+console.log(buff1);
