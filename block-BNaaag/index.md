@@ -5,10 +5,12 @@ writeCode
 - create file whenever required on your own.
 
 ```js
-// index.js
-fs.readFile('./content.md'// filepath, (err, file) => {
-  // handle error or content of the file
-})
+let fs = require("fs");
+let path = require("path");
+let filepath = path.join(__dirname, "content.md");
+fs.readFile("content.md", (error, file) => {
+  console.log(error, file.toString());
+});
 ```
 
 2. Run sync code from fs module in the above file(`index.js`).
