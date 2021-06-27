@@ -144,10 +144,9 @@ server11.listen(2345, () => {
 let server12 = http.createServer((req, res) => {
   let parsedUrl = url.parse(req.url);
   let pathname = parsedUrl.pathname;
-  console.log(req);
-  console.log(pathname, req.url);
-  res.setHeader("Content-Type", "json");
-  res.end();
+  console.log(parsedUrl, req.url);
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(parsedUrl.query));
 });
 server12.listen(2344, () => {
   console.log(`Listening to 2344`);
