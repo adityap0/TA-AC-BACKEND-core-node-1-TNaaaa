@@ -1,13 +1,22 @@
-// writeCode
-
-// 1. create a server on port 4444 and request from browser on `localhost:4444`
-// 2. Add statusCode of 201 and headers to send html content to response
-// 3. Do request on server using **different HTTP methods** using **Postman** and write code to check request methods for multiple requests.
 let http = require("http");
+let url = require("url");
+
 let server = http.createServer((req, res) => {
-  res.statusCode = 201;
-  res.end();
+  var parsedUrl = url.parse(req.url);
+  var pathname = parsedUrl.pathname;
+  if ((req.method === "GET", pathname === "/")) {
+    res.write(`Welcome to the index Page`);
+    res.end();
+  } else if (req.method === "GET" && pathname === "/about") {
+    res.setHeader("Content-Type", "text/html");
+    res.end("<h1>About Page</h1>");
+  } else if (req.method === "GET" && pathname === "/users") {
+    res.setHeader("Content-Type", "text/html");
+    res.end("<h1>User Info</h1>");
+  } else if (req.method === "POST" && pathname === "/users") {
+    res.end(`Posted for the first time`);
+  }
 });
-server.listen(4444, () => {
-  console.log(`Hello`);
+server.listen(3000, () => {
+  console.log(`listen`);
 });
