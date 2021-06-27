@@ -6,16 +6,10 @@
 // 3. notice the output in browser and terminal.
 
 var http = require("http");
-http
-  .createServer((request, response) => {
-    response.end(`Welcome`);
-  })
-  .listen(4000, `localhost`);
-
-// var server = http.createServer(handleRequest);
-// handleRequest = (request, response) => {
-//   response.end(`Welcome`);
-// };
-// server.listen(3000, () => {
-//   console.log(`Hello, Server listening on port 3000`);
-// });
+var server = http.createServer(handleRequest);
+handleRequest = (request, response) => {
+  response.end(`Welcome`);
+};
+server.listen(4000, () => {
+  console.log(`Hello, Server listening on port 3000`);
+});
