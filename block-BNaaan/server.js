@@ -1,8 +1,9 @@
 var http = require("http");
-let server = http.createServer((req, res) => {
-  console.log(req.method, req.url);
+var server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.write("Hello");
+  res.end(`<h1>Welcome</h1>`);
 });
-
 server.listen(3000, () => {
-  console.log(`Server Active on 3000`);
+  console.log(`Active Server`);
 });
